@@ -1,46 +1,46 @@
 # Portfolio Website - Võ Tấn Dũng
 
-## 📋 Tổng quan dự án
+## 📋 Overview
 
-Website portfolio cá nhân được xây dựng bằng Next.js 14 với TypeScript, tích hợp các hiệu ứng neon, animations, 3D elements với Three.js và responsive design. Website bao gồm các trang chính: Home, About, Projects và Contact với theme switching (dark/light mode).
+A personal portfolio website built with Next.js 14 and TypeScript, featuring neon effects, animations, 3D elements with Three.js, and a fully responsive design. The website includes the main pages: Home, About, Projects, and Contact, with theme switching (dark/light mode).
 
 ## 🛠️ Công nghệ sử dụng
 
 ### Frontend Framework
-- **Next.js 14**: React framework với App Router
-- **TypeScript**: Ngôn ngữ lập trình mạnh mẽ với type safety
-- **React 18**: Library JavaScript để xây dựng UI
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Strongly typed programming language with type safety
+- **React 18**: JavaScript library for building user interfaces
 
 ### Styling & UI
 - **Tailwind CSS**: Utility-first CSS framework
-- **Framer Motion**: Library animation cho React
-- **CSS Custom Properties**: Biến CSS cho theming
+- **Framer Motion**: Animation library for React
+- **CSS Custom Properties**: CSS variables for theming
 
 ### 3D & Visual Effects
-- **Three.js**: Tạo hiệu ứng và mô hình 3D
+- **Three.js**: Creating 3D effects and models
 
 ### Theme & Interactions
 - **next-themes**: Theme switching (dark/light mode)
 - **React Icons**: Icon library (Facebook, Instagram, LinkedIn, GitHub)
 
 ### Form & Communication
-- **EmailJS**: Gửi email từ client-side
-- **React Hooks**: useState, useEffect cho state management
+- **EmailJS**: Send emails from client-side
+- **React Hooks**: useState, useEffect for state management
 
-## 📁 Cấu trúc thư mục
+## 📁 Folder Structure
 
 ```
 src/
 ├── app/
-│   ├── favicon.ico          # Icon trang web
-│   ├── globals.css          # CSS toàn cục và hiệu ứng neon
-│   ├── layout.tsx           # Layout chính của ứng dụng
-│   ├── page.tsx             # Trang chính (Home, About, Projects, Contact)
+│   ├── favicon.ico          # Website icon
+│   ├── globals.css          # Global CSS and neon effects
+│   ├── layout.tsx           # Main application layout
+│   ├── page.tsx             # Main page (Home, About, Projects, Contact)
 │   ├── providers.tsx        # Theme providers
-│   ├── ThemeSwitcher.tsx    # Component chuyển đổi theme
-│   └── ThreeBackground.tsx  # Background 3D (nếu có)
+│   ├── ThemeSwitcher.tsx    # Theme switcher component
+│   └── ThreeBackground.tsx  # Background 3D
 public/
-├── profile.jpg              # Ảnh profile
+├── profile.jpg              # Profile picture
 ├── file.svg                 # Icons SVG
 ├── globe.svg
 ├── next.svg
@@ -48,24 +48,24 @@ public/
 └── window.svg
 ```
 
-## 🚀 Cách chạy dự án
+## 🚀 How to run the project
 
-### 1. Cài đặt dependencies
+### 1. Install dependencies
 ```bash
 npm install
-# hoặc
+# or
 yarn install
 ```
 
-### 2. Chạy development server
+### 2. Start the development server
 ```bash
 npm run dev
-# hoặc
+# or
 yarn dev
 ```
 
-### 3. Mở trình duyệt
-Truy cập `http://localhost:3000` để xem website.
+### 3. Open in browser
+Go to `http://localhost:3000` to view the website.
 
 ### 4. Build production
 ```bash
@@ -73,38 +73,38 @@ npm run build
 npm start
 ```
 
-## ⚙️ Cấu hình
+## ⚙️ Config
 
 ### EmailJS Setup
-1. Tạo tài khoản tại [EmailJS](https://www.emailjs.com/)
-2. Tạo service và template
-3. Thay thế các giá trị trong `ContactForm`
+1. Create an account at [EmailJS](https://www.emailjs.com/)
+2. Create a service and a template
+3. Replace the values in `ContactForm`
 
 ## 🎯 Tính năng nổi bật
 
 ### 1. Performance Optimization
-- **Image Optimization**: Next.js Image component với lazy loading
-- **Code Splitting**: Automatic code splitting với Next.js
-- **SSR/SSG**: Server-side rendering cho SEO tốt hơn
+- **Image Optimization**: Next.js Image component with lazy loading
+- **Code Splitting**: Automatic code splitting with Next.js
+- **SSR/SSG**: Server-side rendering for better SEO
 
 ### 2. Accessibility
-- **Semantic HTML**: Sử dụng đúng các thẻ HTML5
-- **ARIA Labels**: Accessibility cho screen readers
-- **Keyboard Navigation**: Hỗ trợ điều hướng bằng phím
+- **Semantic HTML**: Proper usage of HTML5 tags
+- **ARIA Labels**: Accessibility support for screen readers
+- **Keyboard Navigation**: Supports navigation via keyboard
 
 ### 3. SEO Friendly
-- **Meta Tags**: Proper meta tags trong layout
+- **Meta Tags**: Proper meta tags in layout
 - **Structured Data**: Schema markup
 - **Sitemap**: Auto-generated sitemap
 
 ### 4. Cross-browser Compatibility
 - **Modern Browsers**: Chrome, Firefox, Safari, Edge
-- **Progressive Enhancement**: Fallbacks cho older browsers
-- **CSS Prefixes**: Vendor prefixes cho animations
+- **Progressive Enhancement**: Fallbacks for older browsers
+- **CSS Prefixes**: Vendor prefixes for animations
 
 ## 📄 License
 
-MIT License - có thể sử dụng tự do cho projects cá nhân và thương mại.
+MIT License - free to use for both personal and commercial projects.
 
 ## 📞 Contact
 
@@ -114,7 +114,7 @@ MIT License - có thể sử dụng tự do cho projects cá nhân và thương 
 
 ---
 
-*Website portfolio này được xây dựng với ❤️ bằng Next.js, TypeScript và Tailwind CSS.*
+*This portfolio website was built with ❤️ using Next.js, TypeScript, ThreeJS, and Tailwind CSS.*
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
