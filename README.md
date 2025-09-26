@@ -2,7 +2,7 @@
 
 ## 📋 Tổng quan dự án
 
-Website portfolio cá nhân được xây dựng bằng Next.js 14 với TypeScript, tích hợp các hiệu ứng neon, animations và responsive design. Website bao gồm các trang chính: Home, About, Projects và Contact với theme switching (dark/light mode).
+Website portfolio cá nhân được xây dựng bằng Next.js 14 với TypeScript, tích hợp các hiệu ứng neon, animations, 3D elements với Three.js và responsive design. Website bao gồm các trang chính: Home, About, Projects và Contact với theme switching (dark/light mode).
 
 ## 🛠️ Công nghệ sử dụng
 
@@ -15,6 +15,9 @@ Website portfolio cá nhân được xây dựng bằng Next.js 14 với TypeScr
 - **Tailwind CSS**: Utility-first CSS framework
 - **Framer Motion**: Library animation cho React
 - **CSS Custom Properties**: Biến CSS cho theming
+
+### 3D & Visual Effects
+- **Three.js**: Tạo hiệu ứng và mô hình 3D
 
 ### Theme & Interactions
 - **next-themes**: Theme switching (dark/light mode)
