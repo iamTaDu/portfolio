@@ -4,7 +4,7 @@
 
 A personal portfolio website built with Next.js 14 and TypeScript, featuring neon effects, animations, 3D elements with Three.js, and a fully responsive design. The website includes the main pages: Home, About, Projects, and Contact, with theme switching (dark/light mode).
 
-## 🛠️ Công nghệ sử dụng
+## 🛠️ Tools & Technologies
 
 ### Frontend Framework
 - **Next.js 14**: React framework with App Router
@@ -80,7 +80,7 @@ npm start
 2. Create a service and a template
 3. Replace the values in `ContactForm`
 
-## 🎯 Tính năng nổi bật
+## 🎯 Feature Highlights
 
 ### 1. Performance Optimization
 - **Image Optimization**: Next.js Image component with lazy loading
