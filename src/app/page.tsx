@@ -95,7 +95,7 @@ function ContactForm(props: { theme?: string }) {
         ></textarea>
         <button
           type="submit"
-          className={`font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg ${props.theme === "dark" ? "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50" : "bg-red-500 text-white hover:bg-red-600 hover:shadow-red-500/50 animate-gradientText"}`}
+          className="font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50"
         >
           Send Message
         </button>
@@ -141,13 +141,12 @@ function ProjectCard({
         className={`rounded-lg p-6 flex flex-col h-full relative z-10 transition-all ${theme === "dark" ? "bg-[#10131a]" : "bg-white border border-gray-200"}`}
       >
         <h3
-          className={`text-xl font-bold mb-2 ${theme === "light" ? "neon-light" : "neon"}`}
+          className={`text-xl font-bold mb-2 ${theme === "light" ? "" : "neon"}`}
           style={{
             color: borderColor,
-            textShadow:
-              theme === "light"
-                ? `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`
-                : `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
+            textShadow: theme === "light" 
+              ? "none"
+              : `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
           }}
         >
           {title}
@@ -179,13 +178,16 @@ function ProjectCard({
             style={{
               border: `1px solid ${borderColor}`,
               color: borderColor,
-              textShadow: `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
+              textShadow: theme === "light" 
+                ? "none" 
+                : `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = borderColor;
               e.currentTarget.style.color = theme === "dark" ? "#000" : "#fff";
-              e.currentTarget.style.textShadow =
-                theme === "dark"
+              e.currentTarget.style.textShadow = theme === "light"
+                ? "none"
+                : theme === "dark"
                   ? `0 0 8px #000, 0 0 16px #000`
                   : `0 0 8px #fff, 0 0 16px #fff`;
             }}
@@ -193,7 +195,9 @@ function ProjectCard({
               e.currentTarget.style.backgroundColor =
                 theme === "dark" ? "transparent" : "#f9fafb";
               e.currentTarget.style.color = borderColor;
-              e.currentTarget.style.textShadow = `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`;
+              e.currentTarget.style.textShadow = theme === "light"
+                ? "none"
+                : `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`;
             }}
           >
             View on GitHub
@@ -255,7 +259,7 @@ function CurrentFocus({ theme }: { theme?: string }) {
   return (
     <div>
       <h3
-        className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-300"}`}
+        className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
       >
         Current Focus
       </h3>
@@ -295,10 +299,12 @@ function TechCard({
         className={`rounded-lg p-6 flex flex-col h-full relative z-10 min-h-[150px] ${theme === "light" ? "bg-white border border-gray-200" : "bg-[#10131a]"}`}
       >
         <h3
-          className={`text-lg font-bold mb-3 ${theme === "light" ? "neon-light" : "neon"}`}
+          className={`text-lg font-bold mb-3 ${theme === "light" ? "" : "neon"}`}
           style={{
             color: borderColor,
-            textShadow: `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
+            textShadow: theme === "light" 
+              ? "none" 
+              : `0 0 8px ${borderColor}, 0 0 16px ${borderColor}`,
           }}
         >
           {title}
@@ -377,12 +383,12 @@ function Journey({ theme }: { theme?: string }) {
     return (
       <div className="w-full">
         <h3
-          className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-300"}`}
+          className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
         >
           My Journey at HUFLIT
         </h3>
         <div className="text-center py-8">
-          <div className={`inline-block animate-pulse ${theme === "light" ? "text-red-600" : "text-cyan-400"}`}>
+          <div className={`inline-block animate-pulse ${theme === "light" ? "text-cyan-600" : "text-[#00eaff]"}`}>
             Loading timeline...
           </div>
         </div>
@@ -393,13 +399,13 @@ function Journey({ theme }: { theme?: string }) {
   return (
     <div className="w-full">
       <h3
-        className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-300"}`}
+        className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
       >
         My Journey in HUFLIT
       </h3>
       <div className="relative max-w-4xl mx-auto">
         {/* Central Timeline Line */}
-        <div className={`absolute left-1/2 top-0 bottom-0 w-1 ${theme === "light" ? "bg-red-400" : "bg-cyan-400"} transform -translate-x-1/2`}></div>
+        <div className={`absolute left-1/2 top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} transform -translate-x-1/2`}></div>
         
         {journeyData.map((item, index) => {
           const isLeft = index % 2 === 0;
@@ -419,7 +425,7 @@ function Journey({ theme }: { theme?: string }) {
             >
               {/* Content Container */}
               <div className={`w-5/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
-                <div className={`p-6 rounded-lg border-2 shadow-lg ${theme === "light" ? "bg-white border-red-400 shadow-gray-200" : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"} relative`}>
+                <div className={`p-6 rounded-lg border-2 shadow-lg ${theme === "light" ? "bg-white border-cyan-400 shadow-cyan-500/20" : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"} relative`}>
                   {/* Arrow pointing to timeline */}
                   <div 
                     className={`absolute top-6 ${isLeft ? 'right-0' : 'left-0'} w-0 h-0 ${isLeft ? 'transform translate-x-full' : 'transform -translate-x-full'}`}
@@ -427,11 +433,11 @@ function Journey({ theme }: { theme?: string }) {
                       borderTop: `10px solid transparent`,
                       borderBottom: `10px solid transparent`,
                       [isLeft ? 'borderLeft' : 'borderRight']: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}`,
-                      filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#f87171' : '#22d3ee'})`
+                      filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#00eaff' : '#00eaff'})`
                     }}
                   ></div>
                   
-                  <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-red-100 text-red-700" : "bg-cyan-900 text-cyan-300"}`}>
+                  <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-cyan-100 text-cyan-700" : "bg-cyan-900 text-cyan-300"}`}>
                     {item.year}
                   </div>
                   <h4 className={`text-lg font-bold mb-3 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
@@ -447,14 +453,14 @@ function Journey({ theme }: { theme?: string }) {
               <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                 {mounted ? (
                   <motion.div 
-                    className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-red-400 border-red-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
+                    className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
                     viewport={{ once: true }}
                   />
                 ) : (
-                  <div className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-red-400 border-red-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`} />
+                  <div className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`} />
                 )}
               </div>
             </Component>
@@ -469,7 +475,7 @@ function AboutMe(props: { theme?: string }) {
   return (
     <section id="about" className="w-full py-16">
       <h2
-        className={`text-5xl font-bold mb-12 text-center ${props?.theme === "light" ? "neon-light" : "neon"}`}
+        className={`text-5xl font-bold mb-12 text-center ${props?.theme === "light" ? "text-[#00eaff]" : "neon"}`}
       >
         About Me
       </h2>
@@ -628,7 +634,7 @@ export default function Home() {
 
       <nav className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md border-b ${
         theme === "light" 
-          ? "bg-gray-200/90 border-[#ff2d2d44]" 
+          ? "bg-gray-200/90 border-cyan-400/30" 
           : "bg-[#181c2b]/80 border-[#00eaff44]"
       }`}>
         <span className="text-2xl font-bold tracking-wide bg-gradient-to-r from-pink-500 via-blue-500 to-green-400 bg-clip-text text-transparent animate-gradientText">
@@ -658,8 +664,8 @@ export default function Home() {
               <span 
                 className="transition-all duration-300 group-hover:brightness-150"
                 style={{
-                  color: theme === "dark" ? "#8b5cf6" : "#eab308", // tím cho dark mode, vàng cho light mode
-                  textShadow: `0 0 8px ${theme === "dark" ? "#8b5cf6" : "#eab308"}, 0 0 2px #fff`,
+                  color: "#22d3ee", // cyan-400 cho cả 2 mode
+                  textShadow: `0 0 8px #22d3ee, 0 0 2px #fff`,
                   transition: "text-shadow 0.3s, color 0.3s, filter 0.3s"
                 }}
               >
@@ -676,7 +682,7 @@ export default function Home() {
                 : "border-white"
             }`}
             style={{
-              color: theme === "light" ? "#eab308" : "#8b5cf6", // yellow-500 cho light, purple-500 cho dark
+              color: "#22d3ee", // cyan-400 cho cả 2 mode
               textDecoration: "none",
               boxShadow: "none !important",
               textShadow: "none !important",
@@ -719,15 +725,16 @@ export default function Home() {
             Xin chào!
           </motion.span>
           <motion.p 
-            className="text-lg font-semibold mt-2 text-gray-700 dark:text-gray-200"
+            className="text-lg font-semibold mt-2 text-gray-500 dark:text-gray-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            I&apos;m <span className="font-extrabold">
-              <TypingText text="Võ Tấn Dũng" delay={120} startDelay={1800} />
-            </span> - Backend
-            Developer specializing in building high-performance, secure, and scalable systems.
+            <TypingText 
+              text="I'm Võ Tấn Dũng - Backend Developer specializing in building high-performance, secure, and scalable systems." 
+              delay={80} 
+              startDelay={1800} 
+            />
           </motion.p>
         </motion.div>
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
@@ -742,35 +749,29 @@ export default function Home() {
               alt="Võ Tấn Dũng"
               fill
               sizes="(max-width: 768px) 12rem, 16rem"
-              className={`rounded-full border-4 object-cover ${theme === "light" ? "border-red-500 shadow-lg shadow-red-500/50" : "border-cyan-400 shadow-lg shadow-cyan-400/50"}`}
+              className={`rounded-full border-4 object-cover border-cyan-400 ${theme === "light" ? "shadow-md shadow-cyan-400/30" : "shadow-lg shadow-cyan-400/50"}`}
               priority
             />
           </motion.div>
           <div className="text-center md:text-left">
             <motion.h1
-              className={`text-7xl font-extrabold mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "neon-light" : "neon"}`}
+              className={`text-7xl font-black mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.5 }}
-              style={{
-                color: theme === "light" ? "#ff1744" : "#00eaff",
-                textShadow: theme === "light" 
-                  ? "0 0 8px #ff1744, 0 0 16px #ff1744"
-                  : "0 0 8px #00eaff, 0 0 16px #00eaff"
-              }}
             >
               Võ Tấn Dũng
             </motion.h1>
             <motion.p
-              className={`text-xl font-bold cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "neon-light" : "neon"}`}
+              className={`text-xl font-black cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "" : "neon"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 3.5 }}
               style={{
-                color: theme === "light" ? "#3b82f6" : "#ec4899", // blue-500 cho light, pink-500/magenta cho dark
-                textShadow: theme === "light" 
-                  ? "0 0 6px #3b82f6, 0 0 12px #3b82f6" 
-                  : "0 0 6px #ec4899, 0 0 12px #ec4899"
+                color: theme === "light" ? "#ff0077ff" : "#ff0077ff",
+                textShadow: theme === "light"
+                  ? "none" // Bỏ hiệu ứng neon cho light mode
+                  : "0 0 6px #ff0077ff, 0 0 12px #ff0077ff" // Giữ nguyên cho dark mode
               }}
             >
               Backend / Fullstack Developer
@@ -790,7 +791,7 @@ export default function Home() {
         viewport={{ once: true }}
       >
         <h2
-          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "neon-light" : "neon"}`}
+          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
         >
           My Project
         </h2>
@@ -866,14 +867,14 @@ export default function Home() {
         viewport={{ once: true }}
       >
         <h2
-          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "neon-light" : "neon"}`}
+          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
         >
           Contact Me
         </h2>
         <div className="flex flex-col md:flex-row gap-2 items-start">
           <div className="flex-1">
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
             >
               For Work
             </h3>
@@ -884,13 +885,13 @@ export default function Home() {
                     window.open('mailto:iamvotandung26@gmail.com', '_blank');
                   }
                 }}
-                className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-red-500 hover:bg-red-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
+                className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-cyan-400 hover:bg-white-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
               >
-                📧 <span className={`${theme === "light" ? "neon-light text-yellow-500" : "neon text-cyan-400"}`}>iamvotandung26@gmail.com</span>
+                📧 <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
               </button>
             </div>
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
             >
               Follow Me
             </h3>
@@ -943,7 +944,7 @@ export default function Home() {
           </div>
           <div className="flex-1 md:max-w-xl mx-auto">
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-light text-red-500" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
             >
               Send a Message
             </h3>
@@ -966,7 +967,7 @@ export default function Home() {
           className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg z-50 transition-all duration-300 hover:scale-110 ${
             theme === "dark" 
               ? "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50" 
-              : "bg-red-500 text-white hover:bg-red-600 hover:shadow-red-500/50"
+              : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50"
           }`}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}

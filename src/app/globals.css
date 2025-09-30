@@ -1,18 +1,4 @@
-.neon-light {
-  color: #ff1744;
-  text-shadow:
-    0 0 8px #ff1744,
-    0 0 2px #fff;
-  transition:
-    text-shadow 0.3s,
-    color 0.3s;
-}
-.neon-light:hover {
-  color: #ff5722;
-  text-shadow:
-    0 0 24px #ff1744,
-    0 0 8px #fff;
-}
+/* Removed neon-light class since we're not using neon effects in light mode */
 
 .no-shadow {
   box-shadow: none !important;
