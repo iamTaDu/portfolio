@@ -239,17 +239,15 @@ function AboutIntro() {
       <p
         className={`text-lg text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
       >
-        Hello! I&apos;m Võ Tấn Dũng, a passionate developer who loves creating
-        robust and scalable solutions. My journey in programming started with
-        curiosity and has evolved into a deep passion for building digital
-        experiences that matter.
+        Hello! I&apos;m Võ Tấn Dũng, as a technology-enthusiastic developer, 
+        I love exploring new technologies and building scalable solutions. 
+        My journey began with crafting sleek websites and gradually evolved into developing larger, more complex systems.
       </p>
       <p
         className={`mt-4 text-lg text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
       >
-        I specialize in backend development while maintaining strong fullstack
-        capabilities. I enjoy working with modern technologies and frameworks to
-        create efficient, maintainable, and user-friendly applications.
+        I specialize in backend development and am currently expanding my skills to become a full-stack developer. 
+        I aim to create products that deliver great user experiences—efficient, intuitive, and user-friendly.
       </p>
     </div>
   );
@@ -266,12 +264,15 @@ function CurrentFocus({ theme }: { theme?: string }) {
       <ul
         className={`list-disc list-inside space-y-2 ${theme === "light" ? "text-black" : "text-gray-300"}`}
       >
-        <li>Building high-performance backend systems with .NET and Java.</li>
+        <li>Improving backend architecture and API performance with .NET/.NET Core.</li>
         <li>
-          Exploring real-time 3D rendering with ThreeJS and React Three Fiber.
+          Expanding fullstack skills with React and TypeScript.
         </li>
         <li>
-          Mastering cloud-native technologies and microservices architecture.
+          Learning deployment, CI/CD, and cloud fundamentals for production-ready systems.
+        </li>
+        <li>
+          Exploring other backend frameworks, especially Node.js, to broaden my technical stack.
         </li>
       </ul>
     </div>
