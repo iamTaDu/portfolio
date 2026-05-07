@@ -374,9 +374,19 @@ function Journey({ theme }: { theme?: string }) {
       content: "Learning software project management and preparing for internship opportunities"
     },
     {
-      year: "08/2025 - Present",
+      year: "08/2025",
       title: "Real-World Experience",
       content: "Preparing for internship to gain practical experience and enhance professional knowledge"
+    },
+    {
+      year: "09/2025 - 12/2025",
+      title: "Internship & Career Development",
+      content: "Internship at Nam Thanh Binh Company. Gained hands-on experience in real-world projects and learned to analyze client business requirements to build enterprise management systems."
+    },
+    {
+      year: "09/04/2026",
+      title: "Gradution & Future Plans",
+      content: "Graduated with a Bachelor's degree and launched a career in the IT industry."
     }
   ];
 
