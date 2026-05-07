@@ -336,47 +336,47 @@ function Journey({ theme }: { theme?: string }) {
     {
       year: "09/2022 - 11/2022",
       title: "Getting Started with Programming",
-      content: "Introduction to basic coding with C# programming language"
+      content: "Introduction to basic coding with C# programming language."
     },
     {
       year: "02/2023 - 04/2023",
       title: "Database & Core Programming",
-      content: "Learning database interaction with SQL Server, fundamental programming techniques: Recursion, Divide and Conquer, Sorting Algorithms, and Object-Oriented Programming (OOP)"
+      content: "Learning database interaction with SQL Server, fundamental programming techniques: Recursion, Divide and Conquer, Sorting Algorithms, and Object-Oriented Programming (OOP)."
     },
     {
       year: "08/2023 - 10/2023",
       title: "Web Development & Data Structures",
-      content: "Introduction to web development with HTML, CSS and ASP.NET MVC framework, deep dive into data structures and algorithms: OOP, Stack, Queue, Linked List, Binary Tree"
+      content: "Introduction to web development with HTML, CSS and ASP.NET MVC framework, deep dive into data structures and algorithms: OOP, Stack, Queue, Linked List, Binary Tree."
     },
     {
       year: "12/2023 - 03/2024",
       title: "Mobile Development & Graph Algorithms",
-      content: "Mobile development with Java - Android Studio, learning graph algorithms like DFS, BFS, Dijkstra, Prim... and understanding software analysis and design principles"
+      content: "Mobile development with Java - Android Studio, learning graph algorithms like DFS, BFS, Dijkstra, Prim... and understanding software analysis and design principles."
     },
     {
       year: "05/2024 - 07/2024",
       title: "Team Collaboration & Project Management",
-      content: "Learning teamwork and group project execution following the complete process from analysis and design to programming"
+      content: "Learning teamwork and group project execution following the complete process from analysis and design to programming."
     },
     {
       year: "09/2024 - 11/2024",
       title: "Agile Development & APIs",
-      content: "Implementing group projects using Agile-Scrum methodology and working with RESTful APIs"
+      content: "Implementing group projects using Agile-Scrum methodology and working with RESTful APIs."
     },
     {
       year: "12/2024 - 03/2025",
       title: "Design Patterns & Deployment",
-      content: "Learning to apply design patterns in real projects and understanding how to deploy websites to the internet"
+      content: "Learning to apply design patterns in real projects and understanding how to deploy websites to the internet."
     },
     {
       year: "05/2025 - 07/2025",
       title: "Project Management & Internship Prep",
-      content: "Learning software project management and preparing for internship opportunities"
+      content: "Learning software project management and preparing for internship opportunities."
     },
     {
       year: "08/2025",
       title: "Real-World Experience",
-      content: "Preparing for internship to gain practical experience and enhance professional knowledge"
+      content: "Preparing for internship to gain practical experience and enhance professional knowledge."
     },
     {
       year: "09/2025 - 12/2025",
