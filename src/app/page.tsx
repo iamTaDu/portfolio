@@ -1009,7 +1009,7 @@ export default function Home() {
       )}
 
       <footer
-        className={`w-full text-center text-sm mt-16 ${theme === "light" ? "text-black" : "text-gray-400"}`}
+        className={`w-full text-center py-8 text-sm mt-16 ${theme === "light" ? "text-black" : "text-gray-400"}`}
       >
         © 2025 Võ Tấn Dũng. Built with NextJS, ThreeJS, Tailwind CSS.
       </footer>
