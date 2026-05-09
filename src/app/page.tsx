@@ -623,7 +623,7 @@ export default function Home() {
   // Show loading state while mounting
   if (!mounted) {
     return (
-      <main className="overflow-x-hidden min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 bg-black text-white">
+      <main className="overflow-x-hidden min-h-screen w-full flex flex-col items-center justify-start px-4 pt-8 pb-0 bg-black text-white">
         {/* Loading content */}
       </main>
     );
@@ -631,7 +631,7 @@ export default function Home() {
   
   return (
     <main
-      className={`min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+      className={`min-h-screen w-full flex flex-col items-center justify-start pt-8 pb-0 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
     >
       {theme === "dark" && (
         <div
@@ -1009,7 +1009,7 @@ export default function Home() {
       )}
 
       <footer
-        className={`w-full text-center py-8 text-sm mt-16 ${theme === "light" ? "text-black" : "text-gray-400"}`}
+        className={`w-full text-center text-sm mt-16 ${theme === "light" ? "text-black" : "text-gray-400"}`}
       >
         © 2025 Võ Tấn Dũng. Built with NextJS, ThreeJS, Tailwind CSS.
       </footer>
