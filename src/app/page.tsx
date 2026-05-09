@@ -396,14 +396,12 @@ function Journey({ theme }: { theme?: string }) {
 
   return (
     <div className="w-full px-2 md:px-0">
-      <h3
-        className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
-      >
+      <h3 className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}>
         My Journey in HUFLIT
       </h3>
       <div className="relative max-w-5xl mx-auto">
         {/* Central Timeline Line */}
-        <div className={`absolute left-1/2 top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} transform -translate-x-1/2`}></div>
+        <div className={`absolute top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} left-[18px] md:left-1/2 -translate-x-1/2 z-0`}></div>
         
         {journeyData.map((item, index) => {
           const isLeft = index % 2 === 0;
@@ -412,29 +410,45 @@ function Journey({ theme }: { theme?: string }) {
             initial: { opacity: 0, x: isLeft ? -100 : 100 },
             whileInView: { opacity: 1, x: 0 },
             transition: { duration: 0.8, delay: index * 0.2 },
-            viewport: { once: true }
+            viewport: { once: true, margin: "-50px"}
           } : {};
 
           return (
             <Component
               key={index}
-              className={`relative flex mb-12 ${isLeft ? 'justify-start' : 'justify-end'}`}
+              className={isLeft 
+                  ? "relative flex items-start mb-12 w-full justify-start md:justify-start" 
+                  : "relative flex items-start mb-12 w-full justify-start md:justify-end"}
               {...animationProps}
             >
               {/* Content Container */}
-              <div className={`w-5/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
-                <div className={`p-6 rounded-lg border-2 shadow-lg ${theme === "light" ? "bg-white border-cyan-400 shadow-cyan-500/20" : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"} relative`}>
+              <div className={isLeft
+                  ? "w-full md:w-5/12 pl-[45px] md:pl-0 md:pr-10"
+                  : "w-full md:w-5/12 pl-[45px] md:pl-10"}>
+                <div className={`p-4 md:p-6 rounded-xl border-2 shadow-lg transition-transform hover:scale-[1.02] ${
+                    theme === "light" 
+                    ? "bg-white border-cyan-400 shadow-cyan-500/20" 
+                    : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"
+                  } relative`}>
+
                   {/* Arrow pointing to timeline */}
                   <div 
-                    className={`absolute top-6 ${isLeft ? 'right-0' : 'left-0'} w-0 h-0 ${isLeft ? 'transform translate-x-full' : 'transform -translate-x-full'}`}
+                    className={
+                      isLeft
+                        ? "absolute top-6 hidden md:block right-0 translate-x-full w-0 h-0"
+                        : "absolute top-6 hidden md:block left-0 -translate-x-full w-0 h-0"
+                    }
                     style={{
-                      borderTop: `10px solid transparent`,
-                      borderBottom: `10px solid transparent`,
-                      [isLeft ? 'borderLeft' : 'borderRight']: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}`,
+                      borderTop: '10px solid transparent',
+                      borderBottom: '10px solid transparent',
+                      ...(isLeft 
+                          ? { borderLeft: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` } 
+                          : { borderRight: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` }
+                      ),
                       filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#00eaff' : '#00eaff'})`
                     }}
                   ></div>
-                  
+
                   <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-cyan-100 text-cyan-700" : "bg-cyan-900 text-cyan-300"}`}>
                     {item.year}
                   </div>
@@ -448,7 +462,7 @@ function Journey({ theme }: { theme?: string }) {
               </div>
               
               {/* Central Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 top-[22px] z-10">
+              <div className="absolute top-[22px] z-10 left-[18px] md:left-1/2 -translate-x-1/2">
                 {mounted ? (
                   <motion.div 
                     className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
