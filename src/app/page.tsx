@@ -623,7 +623,7 @@ export default function Home() {
   // Show loading state while mounting
   if (!mounted) {
     return (
-      <main className="min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 bg-black text-white">
+      <main className="overflow-x-hidden min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 bg-black text-white">
         {/* Loading content */}
       </main>
     );
@@ -645,13 +645,14 @@ export default function Home() {
       )}
       
       <nav className={`fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-4 backdrop-blur-md border-b transition-all duration-300 ${
-        theme === "light" 
+        theme === "light"
           ? "bg-gray-200/90 border-cyan-400/30" 
           : "bg-[#181c2b]/80 border-[#00eaff44]"
       }`}>
         <div className="flex items-center justify-between w-full md:w-auto">
-          <span className="text-2xl font-bold tracking-wide bg-gradient-to-r from-pink-500 via-blue-500 to-green-400 bg-clip-text text-transparent animate-gradientText">
-              iamtaduuuuu portfolio
+          <span className={`text-xl md:text-2xl font-bold tracking-wide bg-gradient-to-r from-pink-500 via-blue-500 to-green-400 bg-clip-text text-transparent animate-gradientText transition-all duration-300 ${
+            isMobileMenuOpen ? "opacity-0 invisible md:opacity-100 md:visible" : "opacity-100 visible"}`}>
+              TaDuuuuu Portfolio
           </span>
           <div className="flex items-center gap-3 md:hidden">
             <ThemeSwitcher />
@@ -705,7 +706,7 @@ export default function Home() {
             <a
               href="/Vo Tan Dung - CV.pdf"
               download
-              className={`font-semibold text-lg px-4 py-2 rounded transition hover:scale-105 ml-2 border no-shadow ${
+              className={`font-semibold text-lg px-4 py-2 rounded-3xl transition hover:scale-105 min-w-max flex-shrink-0 border no-shadow ${
                 theme === "light" ? "border-black" : "border-white"
               }`}
               style={{
@@ -716,7 +717,7 @@ export default function Home() {
                 filter: "none !important"
               }}
             >
-              My CV
+              My&nbsp;CV
             </a>
             <ThemeSwitcher />
           </div>
@@ -915,7 +916,7 @@ export default function Home() {
                 }}
                 className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-cyan-400 hover:bg-white-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
               >
-                📧 <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
+                <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
               </button>
             </div>
             <h3
