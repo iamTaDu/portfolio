@@ -926,7 +926,7 @@ export default function Home() {
             </h3>
             <div className="flex justify-center md:justify-start space-x-6 mb-6">
               <a
-                href="https://www.facebook.com/iamvotandung"
+                href="https://www.facebook.com/iamtaduuuuu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-all duration-300 hover:scale-110 hover:animate-bounce"
