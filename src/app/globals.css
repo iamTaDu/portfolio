@@ -38,6 +38,7 @@
 }
 
 body {
+  overflow-x: hidden;
   min-height: 100vh;
   background: linear-gradient(120deg, #0f2027, #2c5364, #00eaff);
   background-size: 400% 400%;

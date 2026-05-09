@@ -391,32 +391,17 @@ function Journey({ theme }: { theme?: string }) {
   ];
 
   if (!mounted) {
-    return (
-      <div className="w-full">
-        <h3
-          className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
-        >
-          My Journey at HUFLIT
-        </h3>
-        <div className="text-center py-8">
-          <div className={`inline-block animate-pulse ${theme === "light" ? "text-cyan-600" : "text-[#00eaff]"}`}>
-            Loading timeline...
-          </div>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   return (
-    <div className="w-full">
-      <h3
-        className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
-      >
+    <div className="w-full px-2 md:px-0">
+      <h3 className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}>
         My Journey in HUFLIT
       </h3>
-      <div className="relative max-w-4xl mx-auto">
+      <div className="relative max-w-5xl mx-auto">
         {/* Central Timeline Line */}
-        <div className={`absolute left-1/2 top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} transform -translate-x-1/2`}></div>
+        <div className={`absolute top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} left-[18px] md:left-1/2 -translate-x-1/2 z-0`}></div>
         
         {journeyData.map((item, index) => {
           const isLeft = index % 2 === 0;
@@ -425,29 +410,45 @@ function Journey({ theme }: { theme?: string }) {
             initial: { opacity: 0, x: isLeft ? -100 : 100 },
             whileInView: { opacity: 1, x: 0 },
             transition: { duration: 0.8, delay: index * 0.2 },
-            viewport: { once: true }
+            viewport: { once: true, margin: "-50px"}
           } : {};
 
           return (
             <Component
               key={index}
-              className={`relative flex items-center mb-12 ${isLeft ? 'justify-start' : 'justify-end'}`}
+              className={isLeft 
+                  ? "relative flex items-start mb-12 w-full justify-start md:justify-start" 
+                  : "relative flex items-start mb-12 w-full justify-start md:justify-end"}
               {...animationProps}
             >
               {/* Content Container */}
-              <div className={`w-5/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
-                <div className={`p-6 rounded-lg border-2 shadow-lg ${theme === "light" ? "bg-white border-cyan-400 shadow-cyan-500/20" : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"} relative`}>
+              <div className={isLeft
+                  ? "w-full md:w-5/12 pl-[45px] md:pl-0 md:pr-10"
+                  : "w-full md:w-5/12 pl-[45px] md:pl-10"}>
+                <div className={`p-4 md:p-6 rounded-xl border-2 shadow-lg transition-transform hover:scale-[1.02] ${
+                    theme === "light" 
+                    ? "bg-white border-cyan-400 shadow-cyan-500/20" 
+                    : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"
+                  } relative`}>
+
                   {/* Arrow pointing to timeline */}
                   <div 
-                    className={`absolute top-6 ${isLeft ? 'right-0' : 'left-0'} w-0 h-0 ${isLeft ? 'transform translate-x-full' : 'transform -translate-x-full'}`}
+                    className={
+                      isLeft
+                        ? "absolute top-6 hidden md:block right-0 translate-x-full w-0 h-0"
+                        : "absolute top-6 hidden md:block left-0 -translate-x-full w-0 h-0"
+                    }
                     style={{
-                      borderTop: `10px solid transparent`,
-                      borderBottom: `10px solid transparent`,
-                      [isLeft ? 'borderLeft' : 'borderRight']: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}`,
+                      borderTop: '10px solid transparent',
+                      borderBottom: '10px solid transparent',
+                      ...(isLeft 
+                          ? { borderLeft: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` } 
+                          : { borderRight: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` }
+                      ),
                       filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#00eaff' : '#00eaff'})`
                     }}
                   ></div>
-                  
+
                   <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-cyan-100 text-cyan-700" : "bg-cyan-900 text-cyan-300"}`}>
                     {item.year}
                   </div>
@@ -461,7 +462,7 @@ function Journey({ theme }: { theme?: string }) {
               </div>
               
               {/* Central Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+              <div className="absolute top-[22px] z-10 left-[18px] md:left-1/2 -translate-x-1/2">
                 {mounted ? (
                   <motion.div 
                     className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
@@ -580,7 +581,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [mounted, setMounted] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   React.useEffect(() => {
     setMounted(true);
   }, []);
@@ -622,7 +623,7 @@ export default function Home() {
   // Show loading state while mounting
   if (!mounted) {
     return (
-      <main className="min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 bg-black text-white">
+      <main className="overflow-x-hidden min-h-screen w-full flex flex-col items-center justify-start px-4 py-8 bg-black text-white">
         {/* Loading content */}
       </main>
     );
@@ -642,16 +643,29 @@ export default function Home() {
           }}
         ></div>
       )}
-
-      <nav className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md border-b ${
-        theme === "light" 
+      
+      <nav className={`fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-4 backdrop-blur-md border-b transition-all duration-300 ${
+        theme === "light"
           ? "bg-gray-200/90 border-cyan-400/30" 
           : "bg-[#181c2b]/80 border-[#00eaff44]"
       }`}>
-        <span className="text-2xl font-bold tracking-wide bg-gradient-to-r from-pink-500 via-blue-500 to-green-400 bg-clip-text text-transparent animate-gradientText">
-          iamtaduuuuu portfolio
-        </span>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-between w-full md:w-auto">
+          <span className={`text-xl md:text-2xl font-bold tracking-wide bg-gradient-to-r from-pink-500 via-blue-500 to-green-400 bg-clip-text text-transparent animate-gradientText transition-all duration-300 ${
+            isMobileMenuOpen ? "opacity-0 invisible md:opacity-100 md:visible" : "opacity-100 visible"}`}>
+              TaDuuuuu Portfolio
+          </span>
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeSwitcher />
+            <button 
+              className="text-2xl p-2 focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              style={{ color: "#22d3ee", textShadow: "0 0 8px #22d3ee" }}
+            >
+              {isMobileMenuOpen ? "✕" : "☰"}
+            </button>
+          </div>
+        </div>
+        <div className={`${isMobileMenuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0 w-full md:w-auto pb-4 md:pb-0`}>
           {[
             { id: "home", label: "Home" },
             { id: "about", label: "About" },
@@ -670,7 +684,11 @@ export default function Home() {
                     : 'after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-8 after:h-1 after:bg-white after:rounded-full after:content-["" ]'
                   : ""
               }`}
-              onClick={() => setActiveSection(id)}
+              onClick={() => {
+                  setActiveSection(id)
+                  setIsMobileMenuOpen(false)
+                }
+              }
             >
               <span 
                 className="transition-all duration-300 group-hover:brightness-150"
@@ -684,25 +702,25 @@ export default function Home() {
               </span>
             </a>
           ))}
-          <a
-            href="/Vo Tan Dung - CV.pdf"
-            download
-            className={`font-semibold text-lg px-4 py-2 rounded transition hover:scale-105 ml-2 border no-shadow ${
-              theme === "light" 
-                ? "border-black" 
-                : "border-white"
-            }`}
-            style={{
-              color: "#22d3ee", // cyan-400 cho cả 2 mode
-              textDecoration: "none",
-              boxShadow: "none !important",
-              textShadow: "none !important",
-              filter: "none !important"
-            }}
-          >
-            Download CV
-          </a>
-          <ThemeSwitcher />
+          <div className="flex items-center gap-4 mt-2 md:mt-0">
+            <a
+              href="/Vo Tan Dung - CV.pdf"
+              download
+              className={`font-semibold text-lg px-4 py-2 rounded-3xl transition hover:scale-105 min-w-max flex-shrink-0 border no-shadow ${
+                theme === "light" ? "border-black" : "border-white"
+              }`}
+              style={{
+                color: "#22d3ee", // cyan-400 cho cả 2 mode
+                textDecoration: "none",
+                boxShadow: "none !important",
+                textShadow: "none !important",
+                filter: "none !important"
+              }}
+            >
+              My&nbsp;CV
+            </a>
+            <ThemeSwitcher />
+          </div>
         </div>
       </nav>
 
@@ -766,7 +784,7 @@ export default function Home() {
           </motion.div>
           <div className="text-center md:text-left">
             <motion.h1
-              className={`text-7xl font-black mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
+              className={`text-4xl md:text-5xl lg:text-7xl font-black mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.5 }}
@@ -774,7 +792,7 @@ export default function Home() {
               Võ Tấn Dũng
             </motion.h1>
             <motion.p
-              className={`text-xl font-black cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "" : "neon"}`}
+              className={`text-lg md:text-xl font-black cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "" : "neon"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 3.5 }}
@@ -898,7 +916,7 @@ export default function Home() {
                 }}
                 className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-cyan-400 hover:bg-white-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
               >
-                📧 <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
+                <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
               </button>
             </div>
             <h3
