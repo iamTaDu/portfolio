@@ -95,7 +95,7 @@ function ContactForm(props: { theme?: string }) {
         ></textarea>
         <button
           type="submit"
-          className="font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50"
+          className={`font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg ${props.theme === "light" ? "bg-red-500 text-black hover:bg-red-600 hover:shadow-red-500/50" : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50"}`}
         >
           Send Message
         </button>
@@ -257,7 +257,7 @@ function CurrentFocus({ theme }: { theme?: string }) {
   return (
     <div>
       <h3
-        className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}
+        className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-red" : "neon text-cyan-300"}`}
       >
         Current Focus
       </h3>
@@ -396,12 +396,12 @@ function Journey({ theme }: { theme?: string }) {
 
   return (
     <div className="w-full px-2 md:px-0">
-      <h3 className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-300"}`}>
+      <h3 className={`text-2xl font-bold mb-12 text-center ${theme === "light" ? "neon-red" : "neon text-cyan-300"}`}>
         My Journey in HUFLIT
       </h3>
       <div className="relative max-w-5xl mx-auto">
         {/* Central Timeline Line */}
-        <div className={`absolute top-0 bottom-0 w-1 ${theme === "light" ? "bg-cyan-400" : "bg-cyan-400"} left-[18px] md:left-1/2 -translate-x-1/2 z-0`}></div>
+        <div className={`absolute top-0 bottom-0 w-1 ${theme === "light" ? "bg-red-500" : "bg-cyan-400"} left-[18px] md:left-1/2 -translate-x-1/2 z-0`}></div>
         
         {journeyData.map((item, index) => {
           const isLeft = index % 2 === 0;
@@ -427,7 +427,7 @@ function Journey({ theme }: { theme?: string }) {
                   : "w-full md:w-5/12 pl-[45px] md:pl-10"}>
                 <div className={`p-4 md:p-6 rounded-xl border-2 shadow-lg transition-transform hover:scale-[1.02] ${
                     theme === "light" 
-                    ? "bg-white border-cyan-400 shadow-cyan-500/20" 
+                    ? "bg-white border-red-500 shadow-red-500/20" 
                     : "bg-[#10131a] border-cyan-400 shadow-cyan-500/20"
                   } relative`}>
 
@@ -445,11 +445,11 @@ function Journey({ theme }: { theme?: string }) {
                           ? { borderLeft: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` } 
                           : { borderRight: `15px solid ${theme === "light" ? '#ffffff' : '#10131a'}` }
                       ),
-                      filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#00eaff' : '#00eaff'})`
+                      filter: `drop-shadow(${isLeft ? '2px' : '-2px'} 0 0 ${theme === "light" ? '#ef4444' : '#00eaff'})`
                     }}
                   ></div>
 
-                  <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-cyan-100 text-cyan-700" : "bg-cyan-900 text-cyan-300"}`}>
+                  <div className={`text-sm font-bold mb-3 px-3 py-1 rounded-full inline-block ${theme === "light" ? "bg-red-100 text-red-700" : "bg-cyan-900 text-cyan-300"}`}>
                     {item.year}
                   </div>
                   <h4 className={`text-lg font-bold mb-3 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
@@ -465,14 +465,14 @@ function Journey({ theme }: { theme?: string }) {
               <div className="absolute top-[22px] z-10 left-[18px] md:left-1/2 -translate-x-1/2">
                 {mounted ? (
                   <motion.div 
-                    className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
+                    className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-red-500 border-red-600" : "bg-cyan-400 border-cyan-500"} shadow-lg`}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
                     viewport={{ once: true }}
                   />
                 ) : (
-                  <div className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-cyan-400 border-cyan-500" : "bg-cyan-400 border-cyan-500"} shadow-lg`} />
+                  <div className={`w-6 h-6 rounded-full border-4 ${theme === "light" ? "bg-red-500 border-red-600" : "bg-cyan-400 border-cyan-500"} shadow-lg`} />
                 )}
               </div>
             </Component>
@@ -487,7 +487,7 @@ function AboutMe(props: { theme?: string }) {
   return (
     <section id="about" className="w-full py-16">
       <h2
-        className={`text-5xl font-bold mb-12 text-center ${props?.theme === "light" ? "text-[#00eaff]" : "neon"}`}
+        className={`text-5xl font-bold mb-12 text-center ${props?.theme === "light" ? "neon-red" : "neon"}`}
       >
         About Me
       </h2>
@@ -498,21 +498,27 @@ function AboutMe(props: { theme?: string }) {
         </div>
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <TechCard
-            title="Backend"
-            items={["C#", "Java", "ASP.NET Core"]}
+            title="Technical Skills"
+            items={["C#", "JavaScript", "Java", "Dart"]}
             borderColor="#ff2972"
+            theme={props.theme}
+          />
+          <TechCard
+            title="Backend"
+            items={["ASP.NET Core", "Flutter"]}
+            borderColor="#3b82f6"
             theme={props.theme}
           />
           <TechCard
             title="Frontend"
             items={["ReactJS", "NextJS", "ThreeJS"]}
-            borderColor="#3b82f6"
+            borderColor="#10b981"
             theme={props.theme}
           />
           <TechCard
             title="Database"
             items={["SQL Server", "MongoDB", "Firebase"]}
-            borderColor="#10b981"
+            borderColor="#ffd000"
             theme={props.theme}
           />
         </div>
@@ -693,8 +699,8 @@ export default function Home() {
               <span 
                 className="transition-all duration-300 group-hover:brightness-150"
                 style={{
-                  color: "#22d3ee", // cyan-400 cho cả 2 mode
-                  textShadow: `0 0 8px #22d3ee, 0 0 2px #fff`,
+                  color: theme === "light" ? "#ef4444" : "#22d3ee",
+                  textShadow: theme === "light" ? "0 0 8px #ef4444, 0 0 2px #fca5a5" : "0 0 8px #22d3ee, 0 0 2px #fff",
                   transition: "text-shadow 0.3s, color 0.3s, filter 0.3s"
                 }}
               >
@@ -707,10 +713,10 @@ export default function Home() {
               href="/Vo Tan Dung - CV.pdf"
               download
               className={`font-semibold text-lg px-4 py-2 rounded-3xl transition hover:scale-105 min-w-max flex-shrink-0 border no-shadow ${
-                theme === "light" ? "border-black" : "border-white"
+                theme === "light" ? "bg-red-500 text-black border-red-500" : "bg-cyan-500 text-white border-cyan-500"
               }`}
               style={{
-                color: "#22d3ee", // cyan-400 cho cả 2 mode
+                color: theme === "light" ? "#000000" : "#ffffff",
                 textDecoration: "none",
                 boxShadow: "none !important",
                 textShadow: "none !important",
@@ -778,13 +784,13 @@ export default function Home() {
               alt="Võ Tấn Dũng"
               fill
               sizes="(max-width: 768px) 12rem, 16rem"
-              className={`rounded-full border-4 object-cover border-cyan-400 ${theme === "light" ? "shadow-md shadow-cyan-400/30" : "shadow-lg shadow-cyan-400/50"}`}
+              className={`rounded-full border-4 object-cover ${theme === "light" ? "border-red-500 shadow-md shadow-red-500/30" : "border-cyan-400 shadow-lg shadow-cyan-400/50"}`}
               priority
             />
           </motion.div>
           <div className="text-center md:text-left">
             <motion.h1
-              className={`text-4xl md:text-5xl lg:text-7xl font-black mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
+              className={`text-4xl md:text-5xl lg:text-7xl font-black mb-4 tracking-wide cursor-pointer transition-all duration-300 hover:brightness-150 ${theme === "light" ? "neon-red" : "neon"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.5 }}
@@ -820,7 +826,7 @@ export default function Home() {
         viewport={{ once: true }}
       >
         <h2
-          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
+          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "neon-red" : "neon"}`}
         >
           My Project
         </h2>
@@ -865,6 +871,7 @@ export default function Home() {
             description="A mobile application for the MERDI e-commerce platform, built with Flutter for a cross-platform experience, connected to a powerful backend."
             tech={[
               "Flutter",
+              "Dart",
               "ASP.NET Core",
               "SQL Server",
               "JWT",
@@ -896,14 +903,14 @@ export default function Home() {
         viewport={{ once: true }}
       >
         <h2
-          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "text-[#00eaff]" : "neon"}`}
+          className={`text-5xl font-bold mb-12 text-center ${theme === "light" ? "neon-red" : "neon"}`}
         >
           Contact Me
         </h2>
         <div className="flex flex-col md:flex-row gap-2 items-start">
           <div className="flex-1">
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-red" : "neon text-cyan-400"}`}
             >
               For Work
             </h3>
@@ -914,13 +921,13 @@ export default function Home() {
                     window.open('mailto:iamvotandung26@gmail.com', '_blank');
                   }
                 }}
-                className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-cyan-400 hover:bg-white-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
+                className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-red-500 hover:bg-red-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
               >
-                <span className={`${theme === "light" ? "text-[#00eaff]" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
+                <span className={`${theme === "light" ? "neon-red" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
               </button>
             </div>
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-red" : "neon text-cyan-400"}`}
             >
               Follow Me
             </h3>
@@ -973,7 +980,7 @@ export default function Home() {
           </div>
           <div className="flex-1 md:max-w-xl mx-auto">
             <h3
-              className={`text-2xl font-bold mb-4 ${theme === "light" ? "text-[#00eaff]" : "neon text-cyan-400"}`}
+              className={`text-2xl font-bold mb-4 ${theme === "light" ? "neon-red" : "neon text-cyan-400"}`}
             >
               Send a Message
             </h3>
@@ -996,7 +1003,7 @@ export default function Home() {
           className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg z-50 transition-all duration-300 hover:scale-110 ${
             theme === "dark" 
               ? "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50" 
-              : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-cyan-500/50"
+              : "bg-red-500 text-black hover:bg-red-600 hover:shadow-red-500/50"
           }`}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
