@@ -153,7 +153,7 @@ function ProjectCard({
         </h3>
         <span className="text-sm font-semibold text-pink-400 mb-4">{type}</span>
         <p
-          className={`mb-4 flex-grow ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
+          className={`mb-4 flex-grow text-justify ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}
         >
           {description}
         </p>
@@ -237,14 +237,14 @@ function AboutIntro() {
   return (
     <div>
       <p
-        className={`text-lg text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
+        className={`text-lg text-justify text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
       >
         Hello! I&apos;m Võ Tấn Dũng, as a technology-enthusiastic developer, 
         I love exploring new technologies and building scalable solutions. 
         My journey began with crafting sleek websites and gradually evolved into developing larger, more complex systems.
       </p>
       <p
-        className={`mt-4 text-lg text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
+        className={`mt-4 text-lg text-justify text-left ${theme === "light" ? "text-black" : "text-gray-200"}`}
       >
         I specialize in backend development and am currently expanding my skills to become a full-stack developer. 
         I aim to create products that deliver great user experiences—efficient, intuitive, and user-friendly.
@@ -455,7 +455,7 @@ function Journey({ theme }: { theme?: string }) {
                   <h4 className={`text-lg font-bold mb-3 ${theme === "light" ? "text-gray-800" : "text-white"}`}>
                     {item.title}
                   </h4>
-                  <p className={`text-sm leading-relaxed ${theme === "light" ? "text-gray-600" : "text-gray-300"}`}>
+                  <p className={`text-sm leading-relaxed journeyData ${theme === "light" ? "text-gray-600" : "text-gray-300"}`}>
                     {item.content}
                   </p>
                 </div>
@@ -803,7 +803,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 3.5 }}
               style={{
-                color: theme === "light" ? "#ff0077ff" : "#ff0077ff",
+                color: theme === "light" ? "#4169e1" : "#ff0077ff",
                 textShadow: theme === "light"
                   ? "none" // Bỏ hiệu ứng neon cho light mode
                   : "0 0 6px #ff0077ff, 0 0 12px #ff0077ff" // Giữ nguyên cho dark mode
@@ -923,7 +923,7 @@ export default function Home() {
                 }}
                 className={`text-lg px-4 py-2 rounded-lg border transition-all duration-300 hover:scale-105 ${theme === "light" ? "border-red-500 hover:bg-red-500/10" : "border-cyan-400 hover:bg-cyan-400/10"}`}
               >
-                <span className={`${theme === "light" ? "neon-red" : "neon text-[#00eaff]"}`}>iamvotandung26@gmail.com</span>
+                <span className={`${theme === "light" ? "text-black" : "text-white"}`}>iamvotandung26@gmail.com</span>
               </button>
             </div>
             <h3
@@ -985,7 +985,7 @@ export default function Home() {
               Send a Message
             </h3>
             <p
-              className={`mb-8 ${theme === "light" ? "text-black" : "text-gray-300"}`}
+              className={`mb-8 text-justify ${theme === "light" ? "text-black" : "text-gray-300"}`}
             >
               I&apos;m currently open to new opportunities and collaborations.
               Feel free to send me a message using the form, or connect with me
